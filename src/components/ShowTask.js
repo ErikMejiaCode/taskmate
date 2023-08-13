@@ -1,23 +1,25 @@
 import React from "react";
 
-export const ShowTask = () => {
-  const tasks = [
-    { id: 10001, name: "TASK A", time: "3:42:01 PM 8/13/2023" },
-    { id: 10002, name: "TASK B", time: "4:42:01 PM 8/13/2023" },
-    { id: 10003, name: "TASK C", time: "5:42:01 PM 8/13/2023" },
-  ];
+export const ShowTask = ({ taskList, setTaskList }) => {
+  // const tasks = [
+  //   { id: 10001, name: "TASK A", time: "3:42:01 PM 8/13/2023" },
+  //   { id: 10002, name: "TASK B", time: "4:42:01 PM 8/13/2023" },
+  //   { id: 10003, name: "TASK C", time: "5:42:01 PM 8/13/2023" },
+  // ];
 
   return (
     <section className="showTask">
       <div className="head">
         <div>
           <span className="title">Todo</span>
-          <span className="count">0</span>
+          <span className="count">{taskList.length}</span>
         </div>
-        <button className="clearAll">Clear All</button>
+        <button className="clearAll" onClick={() => setTaskList([])}>
+          Clear All
+        </button>
       </div>
       <ul>
-        {tasks.map((task) => {
+        {taskList.map((task) => {
           return (
             <li key={task.id}>
               <p>
