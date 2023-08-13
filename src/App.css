@@ -90,10 +90,11 @@ header .themeSelector .activeTheme {
   box-shadow: var(--box-shadow);
 }
 
-.showTask p.head {
+.showTask .head {
   padding: 10px 0px 20px 0px;
   border-bottom: 1px solid #dfdfdf;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 

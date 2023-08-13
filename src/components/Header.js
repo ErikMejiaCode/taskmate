@@ -11,7 +11,7 @@ export const Header = () => {
       <div className="themeSelector">
         <span className="light"></span>
         <span className="medium"></span>
-        <span className="dark"></span>
+        <span className="dark activeTheme"></span>
         <span className="gradientOne"></span>
         <span className="gradientTwo"></span>
         <span className="gradientThree"></span>
