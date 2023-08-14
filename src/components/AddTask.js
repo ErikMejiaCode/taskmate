@@ -1,12 +1,12 @@
 import React from "react";
 
-export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
+export const AddTask = ({ tasklist, setTaskList, task, setTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (task.id) {
       const date = new Date();
-      const updateTaskList = taskList.map((todo) =>
+      const updateTaskList = tasklist.map((todo) =>
         todo.id === task.id
           ? {
               id: task.id,
@@ -16,6 +16,7 @@ export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
           : { id: todo.id, name: todo.name, time: todo.time }
       );
       setTaskList(updateTaskList);
+      setTask({});
     } else {
       const date = new Date();
       const newTask = {
@@ -23,8 +24,8 @@ export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
         name: e.target.task.value,
         time: `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
       };
-      setTaskList([...taskList, newTask]);
-      e.target.task.value = "";
+      setTaskList([...tasklist, newTask]);
+      setTask({});
     }
   };
 
@@ -32,7 +33,7 @@ export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
     <section className="addTask">
       <form onSubmit={handleSubmit}>
         <input
-          value={task.name}
+          value={task.name || ""}
           type="text"
           placeholder="add task"
           name="task"
@@ -40,8 +41,7 @@ export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
           maxLength="25"
           onChange={(e) => setTask({ ...task, name: e.target.value })}
         />
-
-        <button type="submit">Add</button>
+        <button type="submit">{task.id ? "Update" : "Add"}</button>
       </form>
     </section>
   );
